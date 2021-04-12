@@ -18,7 +18,7 @@ class _MyBannerAdState extends State<MyBannerAd> {
     super.initState();
     _ad = BannerAd(
       adUnitId: AdHelper.bannerAdUnitId,
-      size: AdSize.banner,
+      size: AdSize.fullBanner,
       request: AdRequest(),
       listener: AdListener(
         onAdLoaded: (_) {
@@ -37,22 +37,47 @@ class _MyBannerAdState extends State<MyBannerAd> {
     _ad?.load();
   }
 
+  void reloadBanner() {
+    _ad.load();
+  }
+
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     if (_isAdLoaded) {
-      return Container(
-        child: AdWidget(ad: _ad,),
-        width: _ad.size.width.toDouble(),
-        height: _ad.size.height.toDouble(),
-        alignment: Alignment.center,
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Container(
+              child: AdWidget(ad: _ad,),
+              width: _ad.size.width.toDouble(),
+              height: _ad.size.height.toDouble(),
+              alignment: Alignment.center,
+            ),
+            ElevatedButton(onPressed: () => reloadBanner(), child: Text('Reload'),)
+          ],
+        ),
       );
     } else {
-      return Text("loading...");
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text("loading..."),
+              ElevatedButton(onPressed: () => reloadBanner(), child: Text('Reload!'))
+            ],
+          ),
+        ),
+      );
     }
   }
 }
