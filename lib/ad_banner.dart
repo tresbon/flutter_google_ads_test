@@ -8,7 +8,6 @@ class MyBannerAd extends StatefulWidget {
 }
 
 class _MyBannerAdState extends State<MyBannerAd> {
-
   BannerAd _ad;
   bool _isAdLoaded = false;
 
@@ -55,12 +54,17 @@ class _MyBannerAdState extends State<MyBannerAd> {
         child: Column(
           children: [
             Container(
-              child: AdWidget(ad: _ad,),
+              child: AdWidget(
+                ad: _ad,
+              ),
               width: _ad.size.width.toDouble(),
               height: _ad.size.height.toDouble(),
               alignment: Alignment.center,
             ),
-            ElevatedButton(onPressed: () => reloadBanner(), child: Text('Reload'),)
+            ElevatedButton(
+              onPressed: () => reloadBanner(),
+              child: Text('Reload'),
+            )
           ],
         ),
       );
@@ -73,7 +77,8 @@ class _MyBannerAdState extends State<MyBannerAd> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text("loading..."),
-              ElevatedButton(onPressed: () => reloadBanner(), child: Text('Reload!'))
+              ElevatedButton(
+                  onPressed: () => reloadBanner(), child: Text('Reload!'))
             ],
           ),
         ),

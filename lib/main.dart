@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   Future<InitializationStatus> _initGoogleMobileAds() {
     return MobileAds.instance.initialize();
   }
+
   @override
   Widget build(BuildContext context) {
     _initGoogleMobileAds();
