@@ -37,12 +37,14 @@ class _MyBannerAdState extends State<MyBannerAd> {
   }
 
   void reloadBanner() {
+    _ad.dispose();
     _ad.load();
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
+    _ad.dispose();
     super.dispose();
   }
 
@@ -52,6 +54,7 @@ class _MyBannerAdState extends State<MyBannerAd> {
       return Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Container(
               child: AdWidget(
