@@ -15,6 +15,10 @@ class _MyBannerAdState extends State<MyBannerAd> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    loadBanner();
+  }
+
+  void loadBanner(){
     _ad = BannerAd(
       adUnitId: AdHelper.bannerAdUnitId,
       size: AdSize.fullBanner,
@@ -38,7 +42,7 @@ class _MyBannerAdState extends State<MyBannerAd> {
 
   void reloadBanner() {
     _ad.dispose();
-    _ad.load();
+    loadBanner();
   }
 
   @override
