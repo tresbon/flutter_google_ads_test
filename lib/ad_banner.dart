@@ -41,7 +41,7 @@ class _MyBannerAdState extends State<MyBannerAd> {
   }
 
   void reloadBanner() {
-    _ad.dispose();
+    _ad?.dispose();
     loadBanner();
   }
 
